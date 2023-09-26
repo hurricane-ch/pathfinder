@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,20 +20,21 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "users")
-public class User extends BaseEntity {
+@Table(name = "routes")
+public class Route extends BaseEntity {
 
-    @Column(nullable = false, unique = true)
-    private String username;
-    @Column(nullable = false)
-    private String password;
-    @Column
-    private String fullName;
-    @Column(unique = true)
-    private String email;
-    @ManyToMany
-    private Set<Role> role;
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String gpsCoordinates;
     @Enumerated(EnumType.STRING)
+    @Column
     private Level level;
+    @Column(nullable = false)
+    private String name;
+    @Column
+    private String videoUrl;
+    @ManyToOne
+    private User author;
+    @ManyToMany
+    private Set<Category> categories;
 
 }
