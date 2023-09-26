@@ -23,15 +23,17 @@ import java.util.Set;
 @Table(name = "routes")
 public class Route extends BaseEntity {
 
-    @Column(columnDefinition = "TEXT", nullable = false)
-    private String gpsCoordinates;
+    @Column(columnDefinition = "TEXT", nullable = false,name = "gpx_coordinates")
+    private String gpxCoordinates;
     @Enumerated(EnumType.STRING)
-    @Column
+    @Column(name = "level")
     private Level level;
-    @Column(nullable = false)
+    @Column(nullable = false,name = "name")
     private String name;
-    @Column
+    @Column(name = "video_url")
     private String videoUrl;
+    @Column(name = "description",columnDefinition = "TEXT")
+    private String description;
     @ManyToOne
     private User author;
     @ManyToMany

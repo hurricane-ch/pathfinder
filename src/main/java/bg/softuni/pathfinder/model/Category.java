@@ -21,7 +21,7 @@ public class Category extends BaseEntity {
 
     @Enumerated(value = EnumType.STRING)
     @Column(nullable = false)
-    private CategoryName categoryName;
+    private CategoryName name;
     @Column(columnDefinition = "TEXT")
     private String description;
 

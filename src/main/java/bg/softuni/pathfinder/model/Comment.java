@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -19,11 +20,11 @@ import java.time.LocalDate;
 @Table(name = "comments")
 public class Comment extends BaseEntity {
 
-    @Column
+    @Column(name = "approved")
     private Boolean approved;
-    @Column
-    private LocalDate created;
-    @Column(columnDefinition = "TEXT",nullable = false)
+    @Column(name = "created")
+    private LocalDateTime created;
+    @Column(columnDefinition = "TEXT",nullable = false,name = "text_content")
     private String textContent;
     @ManyToOne
     private User author;

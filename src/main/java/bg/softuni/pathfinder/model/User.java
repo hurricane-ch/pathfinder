@@ -5,6 +5,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -26,11 +28,18 @@ public class User extends BaseEntity {
     private String username;
     @Column(nullable = false)
     private String password;
-    @Column
+    @Column(name = "full_name")
     private String fullName;
+    @Column
+    private Integer age;
     @Column(unique = true)
     private String email;
     @ManyToMany
+    @JoinTable(
+            name = "users_roles", // Specify the name of the join table
+            joinColumns = @JoinColumn(name = "user_id"), // Foreign key to User table
+            inverseJoinColumns = @JoinColumn(name = "roles_id") // Foreign key to Role table
+    )
     private Set<Role> role;
     @Enumerated(EnumType.STRING)
     private Level level;
