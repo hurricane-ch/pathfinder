@@ -1,5 +1,5 @@
 package bg.softuni.pathfinder.enums;
 
-public enum CategoryName {
+public enum CategoryNames {
     PEDESTRIAN, BICYCLE, MOTORCYCLE, CAR
 }
