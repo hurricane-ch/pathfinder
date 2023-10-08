@@ -23,7 +23,7 @@ import java.util.Set;
 @Table(name = "routes")
 public class Route extends BaseEntity {
 
-    @Column(columnDefinition = "TEXT", nullable = false,name = "gpx_coordinates")
+    @Column(columnDefinition = "TEXT",name = "gpx_coordinates")
     private String gpxCoordinates;
     @Enumerated(EnumType.STRING)
     @Column(name = "level")
@@ -39,4 +39,7 @@ public class Route extends BaseEntity {
     @ManyToMany
     private Set<Category> categories;
 
+    public void addCategories(Set<Category> categories) {
+        this.categories.addAll(categories);
+    }
 }
