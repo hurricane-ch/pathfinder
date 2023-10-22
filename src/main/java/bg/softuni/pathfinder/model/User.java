@@ -1,14 +1,7 @@
 package bg.softuni.pathfinder.model;
 
 import bg.softuni.pathfinder.enums.Level;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,17 +18,17 @@ import java.util.Set;
 @Table(name = "users")
 public class User extends BaseEntity {
 
-    @Column(nullable = false, unique = true)
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
-    @Column(nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
     @Column(name = "full_name")
     private String fullName;
-    @Column
+    @Column(name = "age")
     private Integer age;
-    @Column(unique = true)
+    @Column(name = "email", unique = true)
     private String email;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles", // Specify the name of the join table
             joinColumns = @JoinColumn(name = "user_id"), // Foreign key to User table

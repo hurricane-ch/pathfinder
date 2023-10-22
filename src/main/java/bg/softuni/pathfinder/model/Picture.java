@@ -17,9 +17,9 @@ import lombok.Setter;
 @Table(name = "pictures")
 public class Picture extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(name = "title", nullable = false)
     private String title;
-    @Column(columnDefinition = "TEXT",nullable = false)
+    @Column(name = "url",nullable = false)
     private String url;
     @ManyToOne
     private User author;

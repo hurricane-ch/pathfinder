@@ -1,11 +1,7 @@
 package bg.softuni.pathfinder.model;
 
 import bg.softuni.pathfinder.enums.CategoryNames;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,10 +16,10 @@ import lombok.Setter;
 public class Category extends BaseEntity {
 
     @Enumerated(value = EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "name",nullable = false)
     private CategoryNames name;
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "description",columnDefinition = "TEXT")
+    @Lob
     private String description;
-
 
 }

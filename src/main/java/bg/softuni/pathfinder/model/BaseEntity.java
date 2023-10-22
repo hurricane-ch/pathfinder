@@ -1,9 +1,6 @@
 package bg.softuni.pathfinder.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,12 +13,12 @@ import lombok.experimental.SuperBuilder;
 @MappedSuperclass
 @NoArgsConstructor
 @AllArgsConstructor
+@SequenceGenerator(name = "Start", sequenceName = "StartName", allocationSize = 1, initialValue = 10)
+
 public class BaseEntity {
 
-    // proba 123
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY,generator = "Start")
     private Long id;
 
 }

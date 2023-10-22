@@ -19,9 +19,9 @@ import java.time.LocalDate;
 @Table(name = "messages")
 public class Message extends BaseEntity {
 
-    @Column
+    @Column(name = "date_time")
     private LocalDate dateTime;
-    @Column(columnDefinition = "TEXT", nullable = false)
+    @Column(name = "text_content", nullable = false)
     private String textContent;
     @ManyToOne
     private User author;
