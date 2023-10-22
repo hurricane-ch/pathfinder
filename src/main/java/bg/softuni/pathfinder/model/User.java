@@ -34,8 +34,9 @@ public class User extends BaseEntity {
             joinColumns = @JoinColumn(name = "user_id"), // Foreign key to User table
             inverseJoinColumns = @JoinColumn(name = "roles_id") // Foreign key to Role table
     )
-    private Set<Role> role;
+    private Set<Role> roles;
     @Enumerated(EnumType.STRING)
+    @Column(name = "level")
     private Level level;
 
 }

@@ -10,17 +10,17 @@ VALUES (3, 'USER');
 
 -- some test users
 INSERT INTO users (id, age, email, full_name, level, password, username)
-VALUES (1, 28, 'admin@admin.com', 'Admin Adminov', 'ADVANCED', '26dd1ba9ae974a70136ea4463046371516661b0601ca0fb83a905876ca549b3473dd524d578e241b', 'admin');
+VALUES (1, 28, 'admin@admin.com', 'Admin Adminov', 'ADVANCED', '$2a$10$5SFfizxtHkXkE9aCX9kB0uIJxLUkn.Hoo3Rk1JQMmtKO9UykzWZ4e', 'admin');
 
 INSERT INTO users (id, age, email, full_name, level, password, username)
-VALUES (2, 29, 'moderator@moderator.com', 'Moderator Moderatorov', 'INTERMEDIATE', '26dd1ba9ae974a70136ea4463046371516661b0601ca0fb83a905876ca549b3473dd524d578e241b',
+VALUES (2, 29, 'moderator@moderator.com', 'Moderator Moderatorov', 'INTERMEDIATE', '$2a$10$aac2oSqI38IIINNKD1B5feckvqh.3OPnJvRoEDQJYZv7yTcujmLd.',
         'moderator');
 
 INSERT INTO users (id, age, email, full_name, level, password, username)
-VALUES (3, 30, 'user@user.com', 'User Userov', 'BEGINNER', '26dd1ba9ae974a70136ea4463046371516661b0601ca0fb83a905876ca549b3473dd524d578e241b', 'user');
+VALUES (3, 30, 'user@user.com', 'User Userov', 'BEGINNER', '$2a$10$yGFDo48af7pcOLJK9jkWgumfXiXas3d4Sv8HNrk3tH6ggDrwrOll.', 'user');
 
 INSERT INTO users (id, age, email, full_name, level, password, username)
-VALUES (4, 33, 'ivan@ivan.com', 'Ivan Ivanov', 'BEGINNER', '26dd1ba9ae974a70136ea4463046371516661b0601ca0fb83a905876ca549b3473dd524d578e241b', 'ivan');
+VALUES (4, 33, 'ivan@ivan.com', 'Ivan Ivanov', 'BEGINNER', '$2a$10$xArzxMoSAZFwMuQUrJGhMOF73Bt9xcbUTVCn06uczPBE9m7Agm7qi', 'ivan');
 -- user roles
 -- admin
 INSERT INTO users_roles (user_id, roles_id)

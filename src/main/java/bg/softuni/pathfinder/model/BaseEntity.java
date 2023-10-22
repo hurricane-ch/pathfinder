@@ -14,11 +14,11 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SequenceGenerator(name = "Start", sequenceName = "StartName", allocationSize = 1, initialValue = 10)
-
 public class BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY,generator = "Start")
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 }

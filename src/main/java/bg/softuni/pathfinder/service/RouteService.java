@@ -2,7 +2,8 @@ package bg.softuni.pathfinder.service;
 
 import bg.softuni.pathfinder.model.Category;
 import bg.softuni.pathfinder.model.Route;
-import bg.softuni.pathfinder.model.dto.AddRouteBindingModel;
+import bg.softuni.pathfinder.model.dto.binding.AddRouteBindingModel;
+import bg.softuni.pathfinder.model.dto.view.RouteViewModel;
 import bg.softuni.pathfinder.repository.CategoryRepository;
 import bg.softuni.pathfinder.repository.RouteRepository;
 import lombok.AccessLevel;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -21,15 +23,17 @@ public class RouteService {
     private final CategoryRepository categoryRepository;
     private final UserService userService;
 
-    public void add(AddRouteBindingModel addRouteBindingModel) {
-        Route route = modelMapper.map(addRouteBindingModel, Route.class);
-        route.getCategories().clear();
+    public List<RouteViewModel> getAll() {
+        return routeRepository.findAll().stream()
+                .map(route -> modelMapper.map(route, RouteViewModel.class))
+                .toList();
+    }
 
-        Set<Category> categories = categoryRepository.findAllByNameIn(addRouteBindingModel.getCategories());
-        route.addCategories(categories);
-        route.setAuthor(userService.getLoggedUser());
+    public void add(AddRouteBindingModel addRouteBindingModel) {
+
+        Route route = modelMapper.map(addRouteBindingModel, Route.class);
+        System.out.println();
 
         routeRepository.save(route);
     }
-
 }

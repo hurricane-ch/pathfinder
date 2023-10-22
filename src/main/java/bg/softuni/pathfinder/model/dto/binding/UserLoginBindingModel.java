@@ -1,4 +1,4 @@
-package bg.softuni.pathfinder.model.dto;
+package bg.softuni.pathfinder.model.dto.binding;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,8 +7,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class UserLoginBindingModel {
     private String username;
     private String password;
