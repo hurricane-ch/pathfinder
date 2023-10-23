@@ -8,10 +8,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.Set;
 
@@ -19,6 +17,8 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@SuperBuilder
+@Builder
 @Entity
 @Table(name = "routes")
 public class Route extends BaseEntity {
