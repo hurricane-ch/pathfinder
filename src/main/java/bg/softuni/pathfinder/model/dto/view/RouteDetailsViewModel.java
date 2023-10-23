@@ -1,6 +1,7 @@
 package bg.softuni.pathfinder.model.dto.view;
 
 import bg.softuni.pathfinder.enums.Level;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,6 +11,7 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @SuperBuilder
 @NoArgsConstructor
+@AllArgsConstructor
 public class RouteDetailsViewModel {
 
     private Long id;
@@ -18,5 +20,4 @@ public class RouteDetailsViewModel {
     private String description;
     private String videoUrl;
     private String authorName;
-
 }

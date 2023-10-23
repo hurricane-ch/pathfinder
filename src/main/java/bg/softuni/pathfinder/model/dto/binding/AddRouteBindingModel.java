@@ -28,6 +28,4 @@ public class AddRouteBindingModel {
     private String videoUrl;
     private User author;
     private Set<CategoryNames> categories;
-
-
 }

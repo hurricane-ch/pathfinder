@@ -12,21 +12,17 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/users")
-@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
+@RequiredArgsConstructor
 public class UsersController {
 
     public static final String BINDING_RESULT_PATH = "org.springframework.validation.BindingResult";
     public static final String DOT = ".";
-
     private final AuthenticationService authenticationService;
     private final UserService userService;
 
@@ -100,5 +96,10 @@ public class UsersController {
         modelAndView.addObject("userProfileViewModel", userProfileViewModel);
 
         return modelAndView;
+    }
+
+    @ModelAttribute("badCredentials")
+    public boolean badCredentials() {
+        return new ModelAndView().getModelMap().containsKey("badCredentials");
     }
 }

@@ -26,11 +26,10 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/routes")
-@RequiredArgsConstructor(access = AccessLevel.MODULE)
+@RequiredArgsConstructor
 public class RoutesController {
 
     private final RouteService routeService;
-
     public static final String BINDING_RESULT_PATH = "org.springframework.validation.BindingResult";
     private static final String DOT = ".";
 

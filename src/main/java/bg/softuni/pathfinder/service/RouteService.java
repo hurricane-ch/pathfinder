@@ -19,7 +19,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
-@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
+@RequiredArgsConstructor
 public class RouteService {
 
     private final RouteRepository routeRepository;
@@ -30,8 +30,6 @@ public class RouteService {
                 .map(route -> modelMapper.map(route, RouteViewModel.class))
                 .toList();
     }
-
-
     public void add(AddRouteBindingModel addRouteBindingModel) {
 
         Route route = modelMapper.map(addRouteBindingModel, Route.class);
@@ -46,7 +44,6 @@ public class RouteService {
         }
         routeRepository.save(route);
     }
-
     public RouteDetailsViewModel getDetails(Long id) {
         Route route = routeRepository.findById(id)
                 .orElseThrow(() -> new RouteNotFoundException("Route with id: " + id + " was not found!"));

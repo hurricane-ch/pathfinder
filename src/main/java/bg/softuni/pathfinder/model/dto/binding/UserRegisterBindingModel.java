@@ -1,5 +1,6 @@
 package bg.softuni.pathfinder.model.dto.binding;
 
+import bg.softuni.pathfinder.validation.anotations.PasswordMatch;
 import bg.softuni.pathfinder.validation.anotations.UniqueEmail;
 import bg.softuni.pathfinder.validation.anotations.UniqueUsername;
 import jakarta.validation.constraints.Email;
@@ -10,11 +11,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
+@PasswordMatch
 public class UserRegisterBindingModel {
 
     @UniqueUsername
