@@ -97,9 +97,4 @@ public class UsersController {
 
         return modelAndView;
     }
-
-    @ModelAttribute("badCredentials")
-    public boolean badCredentials() {
-        return new ModelAndView().getModelMap().containsKey("badCredentials");
-    }
 }

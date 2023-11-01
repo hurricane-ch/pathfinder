@@ -5,13 +5,15 @@ import bg.softuni.pathfinder.enums.CategoryNames;
 import bg.softuni.pathfinder.enums.Level;
 import bg.softuni.pathfinder.model.Route;
 import bg.softuni.pathfinder.model.dto.binding.AddRouteBindingModel;
+import bg.softuni.pathfinder.model.dto.binding.UploadPictureRouteBindingModel;
+import bg.softuni.pathfinder.model.dto.view.RouteCategoryViewModel;
 import bg.softuni.pathfinder.model.dto.view.RouteDetailsViewModel;
 import bg.softuni.pathfinder.model.dto.view.RouteViewModel;
 import bg.softuni.pathfinder.service.RouteService;
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,10 +31,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class RoutesController {
 
-    private final RouteService routeService;
-    public static final String BINDING_RESULT_PATH = "org.springframework.validation.BindingResult";
+    @Value("${binding-result-package}")
+    private String bindingResultPath;
     private static final String DOT = ".";
 
+    private final RouteService routeService;
 
     @GetMapping
     public ModelAndView getAll() {
@@ -75,12 +78,38 @@ public class RoutesController {
             final String attributeName = "addRouteBindingModel";
             redirectAttributes
                     .addFlashAttribute(attributeName, addRouteBindingModel)
-                    .addFlashAttribute(BINDING_RESULT_PATH + DOT + attributeName, bindingResult);
+                    .addFlashAttribute(bindingResultPath + DOT + attributeName, bindingResult);
             modelAndView.setViewName("redirect:add");
         } else {
             routeService.add(addRouteBindingModel);
             modelAndView.setViewName("redirect:/");
         }
+
+        return modelAndView;
+    }
+
+    @PostMapping("/upload-picture")
+    public ModelAndView uploadPicture(@Valid UploadPictureRouteBindingModel uploadPictureRouteBindingModel) {
+        routeService.uploadPicture(uploadPictureRouteBindingModel);
+
+        return new ModelAndView("redirect:/routes");
+    }
+
+    @GetMapping("/{categoryName}")
+    public ModelAndView getAllByCategory(@PathVariable("categoryName") CategoryNames categoryName) {
+        List<RouteCategoryViewModel> routes = routeService.getAllByCategory(categoryName);
+
+        String view =
+                switch (categoryName) {
+                    case PEDESTRIAN -> "pedestrian";
+                    case MOTORCYCLE -> "motorcycle";
+                    case CAR -> "car";
+                    case BICYCLE -> "bicycle";
+                };
+
+        ModelAndView modelAndView = new ModelAndView(view);
+
+        modelAndView.addObject("routes", routes);
 
         return modelAndView;
     }
