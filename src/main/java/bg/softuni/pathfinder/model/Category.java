@@ -19,7 +19,7 @@ public class Category extends BaseEntity {
     @Column(name = "name",nullable = false)
     private CategoryNames name;
     @Column(name = "description",columnDefinition = "TEXT")
-    @Lob
+//    @Lob
     private String description;
 
 }

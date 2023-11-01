@@ -33,10 +33,11 @@ import java.util.regex.Pattern;
 @RequiredArgsConstructor
 public class RouteService {
 
-    private static final String BASE_GPX_COORDINATES_PATH = ".\\src\\main\\resources\\coordinates\\";
-    private static final String BASE_IMAGES_PATH = ".\\src\\main\\resources\\images\\";
+    private static final String BASE_GPX_COORDINATES_PATH = "/home/niki/IdeaProjects/pathfinder/src/main/resources/coordinates/";
+    private static final String BASE_IMAGES_PATH = "/home/niki/IdeaProjects/pathfinder/src/main/resources/static/images";
     private final RouteRepository routeRepository;
     private final ModelMapper modelMapper;
+    private final CategoryService categoryService;
 
     private final LoggedUser loggedUser;
 
@@ -47,7 +48,7 @@ public class RouteService {
     }
 
     public void add(AddRouteBindingModel addRouteBindingModel) {
-        Route route = modelMapper.map(addRouteBindingModel, Route.class);
+       Route route = modelMapper.map(addRouteBindingModel, Route.class);
 
         String filePath = getFilePath(route.getName());
         boolean isUploaded = uploadGpxCoordinates(addRouteBindingModel.getGpxCoordinates(), filePath);

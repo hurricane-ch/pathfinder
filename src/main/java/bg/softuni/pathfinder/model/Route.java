@@ -39,6 +39,7 @@ public class Route extends BaseEntity {
     @ManyToOne
     private User author;
     @ManyToMany
+    @Enumerated(EnumType.STRING)
     private Set<Category> categories;
 
     public void addCategories(Set<Category> categories) {

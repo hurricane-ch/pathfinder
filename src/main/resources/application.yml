@@ -34,8 +34,8 @@ spring:
     encoding: UTF-8
     prefix: file:src/main/resources/templates/
   resources: # Static resources
-  static-locations: file:src/main/resources/static/
-  cache:
+    static-locations: file:src/main/resources/static/
+    cache:
       period: 0
 
 binding-result-package: org.springframework.validation.BindingResult
