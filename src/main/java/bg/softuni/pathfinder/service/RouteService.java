@@ -123,10 +123,10 @@ public class RouteService {
     }
 
     private String getPicturePath(MultipartFile pictureFile) {
-        String[] splitPictureName = pictureFile.getOriginalFilename().split("\\.");
+        String[] splitPictureName = pictureFile.getOriginalFilename().split("/");
         String ext = splitPictureName[splitPictureName.length - 1];
 
-        String pathPattern = "%s\\%s." + ext;
+        String pathPattern = "%s/%s." + ext;
 
         return String.format(pathPattern,
                 loggedUser.getUsername(),
@@ -135,7 +135,7 @@ public class RouteService {
 
 
     private String getFilePath(String routeName) {
-        String pathPattern = "%s\\%s_%s.xml";
+        String pathPattern = "%s/%s_%s.xml";
         return String.format(pathPattern,
                 loggedUser.getUsername(),
                 transformRouteName(routeName),

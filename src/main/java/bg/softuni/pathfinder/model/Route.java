@@ -1,16 +1,11 @@
 package bg.softuni.pathfinder.model;
 
 import bg.softuni.pathfinder.enums.Level;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -41,6 +36,8 @@ public class Route extends BaseEntity {
     @ManyToMany
     @Enumerated(EnumType.STRING)
     private Set<Category> categories;
+    @OneToMany(mappedBy = "route")
+    private List<Comment> comments;
 
     public void addCategories(Set<Category> categories) {
         this.categories.addAll(categories);

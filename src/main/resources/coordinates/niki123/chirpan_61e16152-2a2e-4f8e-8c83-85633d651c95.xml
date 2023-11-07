@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite2">
+	<test name="AcceptanceTests">
+<!-- 		<parameter name="selenium.host" value="http://127.0.0.1/" /> -->
+<!-- 		<parameter name="selenium.protocol" value="http" /> -->
+
+		<classes>
+			<class name="bg.bulsi.mvnr.nvis.acceptance.tests.NvisLoginIntegrationTest" />
+		</classes>
+	</test>
+</suite>

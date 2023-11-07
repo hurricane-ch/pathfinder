@@ -29,11 +29,11 @@
             <p>Author name: <span th:text="${route.authorName}" id="authorName"></span></p>
             <h4>Difficulty Level (1-3):</h4>
             <div class="level">
-                <p th:style="${route.level == T(bg.softuni.pathfinder.model.enums.Level).BEGINNER} ? 'visibility: visible' : 'visibility: hidden'">
+                <p th:style="${route.level == T(bg.softuni.pathfinder.enums.Level).BEGINNER} ? 'visibility: visible' : 'visibility: hidden'">
                     <img class="level-img" src="/images/difficulty-level.png" alt=""></p>
-                <p th:style="${route.level == T(bg.softuni.pathfinder.model.enums.Level).INTERMEDIATE} ? 'visibility: visible' : 'visibility: hidden'">
+                <p th:style="${route.level == T(bg.softuni.pathfinder.enums.Level).INTERMEDIATE} ? 'visibility: visible' : 'visibility: hidden'">
                     <img class="level-img" src="/images/difficulty-level.png" alt=""></p>
-                <p th:style="${route.level == T(bg.softuni.pathfinder.model.enums.Level).ADVANCED} ? 'visibility: visible' : 'visibility: hidden'">
+                <p th:style="${route.level == T(bg.softuni.pathfinder.enums.Level).ADVANCED} ? 'visibility: visible' : 'visibility: hidden'">
                     <img class="level-img" src="/images/difficulty-level.png" alt=""></p>
             </div>
             <div>
